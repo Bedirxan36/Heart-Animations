@@ -79,15 +79,6 @@ Ardından üst kısımdaki *Canlı Demo* bölümüne sistemin verdiği linki ekl
 
 ---
 
-## 🎯 Yol Haritası
-
-- [ ] screenshots klasörü oluşturulacak  
-- [ ] GitHub Pages aktif edilecek  
-- [ ] Her projeye küçük GIF / demo görseli eklenecek  
-- [ ] Gelişmiş sürüm için React Three Fiber / TypeScript versiyonları değerlendirilecek  
-
----
-
 ## 📄 Lisans
 
 Bu proje **eğitim ve hobi amaçlıdır**. Bazı kod parçaları açık kaynak topluluğundan (CodePen vb.) esinlenilerek oluşturulmuştur.
