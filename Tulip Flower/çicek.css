@@ -1,0 +1,544 @@
+
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-color: #020005; /* Neredeyse tam siyah */
+            --fl-speed: 0.8s;
+            --flower-line-delay: 0.3s;
+            --stem-color: #00f7ff;         
+            --grass-color: #00d2ff;
+        }
+
+        body {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--dark-color);
+            overflow: hidden;
+            perspective: 1000px;
+            font-family: sans-serif;
+            cursor: crosshair; /* Etkileşim hissi için imleç değişimi */
+        }
+
+        .night {
+            position: fixed;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            filter: blur(0.1vmin);
+            background-image: radial-gradient(ellipse at top, #0a001a 0%, var(--dark-color) 60%),
+                linear-gradient(to top, #00051a 0%, transparent 100%);
+            z-index: -10;
+        }
+
+        /* YILDIZLAR */
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            box-shadow: 0 0 5px #fff;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ATEŞ BÖCEKLERİ (Global) */
+        .firefly {
+            position: absolute;
+            width: 0.6vmin;
+            height: 0.6vmin;
+            background-color: #ffff00;
+            border-radius: 50%;
+            filter: blur(0.2vmin);
+            box-shadow: 0 0 5px #ffff00, 0 0 10px #ff9900;
+            animation: float-firefly var(--duration) ease-in-out infinite alternate;
+            opacity: 0;
+        }
+
+        @keyframes float-firefly {
+            0% { transform: translate(0, 0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translate(var(--x-move), var(--y-move)); opacity: 0; }
+        }
+
+        .flowers {
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.1s ease-out; /* Mouse hareketi için yumuşak geçiş */
+        }
+
+        .flower {
+            position: absolute;
+            bottom: 10vmin;
+            transform-origin: bottom center;
+            z-index: 10;
+            --fl-speed: 0.8s;
+        }
+
+        /* RENK VARYASYONLARI (CSS Değişkenleri ile) */
+        .flower--1 {
+            /* Neon Pembe */
+            --tulip-bottom: #ff0080;
+            --tulip-mid: #ff00ff;
+            --tulip-top: #ff99cc;
+            animation: moving-flower-1 4s linear infinite;
+        }
+
+        .flower--2 {
+            /* Neon Mor/Mavi */
+            left: 50%;
+            transform: rotate(20deg);
+            --tulip-bottom: #4b0082;
+            --tulip-mid: #8a2be2;
+            --tulip-top: #e0b0ff;
+            animation: moving-flower-2 4s linear infinite;
+        }
+
+        .flower--3 {
+            /* Neon Turuncu/Kırmızı */
+            left: 50%;
+            transform: rotate(-15deg);
+            --tulip-bottom: #ff4500;
+            --tulip-mid: #ff8c00;
+            --tulip-top: #ffd700;
+            animation: moving-flower-3 4s linear infinite;
+        }
+
+        /* Ortak Çiçek Animasyonları ve Yapı */
+        .flower__line {
+            height: 55vmin;
+            width: 1.5vmin;
+            background-image: linear-gradient(to left, rgba(0,0,0,0.5), transparent, rgba(255,255,255,0.2)),
+                linear-gradient(to top, transparent 10%, var(--stem-color), #39c6d6);
+            box-shadow: 0 0 8px var(--stem-color);
+            animation: grow-flower-tree 4s backwards;
+            border-radius: 4px;
+        }
+
+        .flower--1 .flower__line { height: 70vmin; animation-delay: 0.3s; }
+        .flower--2 .flower__line { height: 60vmin; animation-delay: 0.6s; }
+        .flower--3 .flower__line { animation-delay: 0.9s; }
+
+        /* Yapraklar (Sap üzerindeki) */
+        .flower__line__leaf {
+            --w: 7vmin;
+            --h: calc(var(--w) + 2vmin);
+            position: absolute;
+            top: 20%;
+            left: 90%;
+            width: var(--w);
+            height: var(--h);
+            border-top-right-radius: var(--h);
+            border-bottom-left-radius: var(--h);
+            background-image: linear-gradient(to top, rgba(0, 247, 255, 0.4), #39c6d6);
+            box-shadow: 0 0 6px #00f7ff;
+        }
+
+        /* Yaprak animasyonları - Çiçek bazlı */
+        .flower--1 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.6s backwards; }
+        .flower--1 .flower__line__leaf--2 { top: 45%; animation: blooming-leaf-right var(--fl-speed) 1.4s backwards; }
+        .flower--1 .flower__line__leaf--3 { left: -460%; top: 12%; animation: blooming-leaf-left var(--fl-speed) 1.2s backwards; }
+        .flower--1 .flower__line__leaf--4 { left: -460%; top: 40%; animation: blooming-leaf-left var(--fl-speed) 1s backwards; }
+
+        .flower--2 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.9s backwards; }
+        .flower--2 .flower__line__leaf--2 { top: 45%; animation: blooming-leaf-right var(--fl-speed) 1.7s backwards; }
+        .flower--2 .flower__line__leaf--3 { left: -460%; top: 12%; animation: blooming-leaf-left var(--fl-speed) 1.5s backwards; }
+        .flower--2 .flower__line__leaf--4 { left: -460%; top: 40%; animation: blooming-leaf-left var(--fl-speed) 1.3s backwards; }
+
+        .flower--3 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.5s backwards; }
+        .flower--3 .flower__line__leaf--2 { top: 45%; animation: blooming-leaf-right var(--fl-speed) 2.3s backwards; }
+        .flower--3 .flower__line__leaf--3 { left: -460%; top: 12%; animation: blooming-leaf-left var(--fl-speed) 2.1s backwards; }
+        .flower--3 .flower__line__leaf--4 { left: -460%; top: 40%; animation: blooming-leaf-left var(--fl-speed) 1.9s backwards; }
+
+        /* Ortak Yaprak Konumlandırmaları */
+        .flower__line__leaf--1, .flower__line__leaf--2 { transform: rotate(70deg) rotateY(30deg); }
+        .flower__line__leaf--3, .flower__line__leaf--4 {
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: var(--h);
+            border-bottom-right-radius: var(--h);
+            transform: rotate(-70deg) rotateY(30deg);
+        }
+
+        /* LALE BAŞI */
+        .flower__leafs {
+            position: relative;
+            animation: blooming-flower 2s backwards;
+        }
+
+        .flower__leafs--1 { animation-delay: 1.1s; }
+        .flower__leafs--2 { animation-delay: 1.4s; }
+        .flower__leafs--3 { animation-delay: 1.7s; }
+
+        .flower__leafs::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -100%);
+            width: 8vmin;
+            height: 8vmin;
+            background-color: var(--tulip-mid);
+            filter: blur(8vmin);
+            opacity: 0.6;
+            z-index: -1;
+            animation: pulsate-glow 3s infinite alternate; /* Nefes alma efekti */
+        }
+
+        @keyframes pulsate-glow {
+            0% { opacity: 0.5; filter: blur(8vmin); transform: translate(-50%, -100%) scale(1); }
+            100% { opacity: 0.9; filter: blur(10vmin); transform: translate(-50%, -100%) scale(1.2); }
+        }
+
+        .flower__leaf {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 10vmin;
+            height: 15vmin;
+            border-radius: 0% 100% 50% 50% / 0% 100% 20% 20%;
+            background-color: var(--tulip-mid);
+            background-image: linear-gradient(to top, var(--tulip-bottom), var(--tulip-mid), var(--tulip-top));
+            transform-origin: bottom center;
+            opacity: 0.95;
+            box-shadow: 0 0 15px var(--tulip-mid), inset 0 0 2vmin rgba(255, 255, 255, 0.1);
+            transition: box-shadow 0.5s;
+        }
+
+        .flower__leaf--1 {
+            transform: translate(-90%, 0%) rotate(-15deg);
+            border-radius: 100% 0% 50% 50% / 100% 0% 20% 20%;
+            z-index: 1;
+            border-left: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .flower__leaf--2 {
+            transform: translate(-10%, 0%) rotate(15deg);
+            z-index: 1;
+            border-right: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .flower__leaf--3 {
+            width: 8vmin; 
+            height: 16vmin;
+            transform: translate(-50%, 0%) translateZ(-1vmin);
+            background-image: linear-gradient(to top, #1a001a, var(--tulip-mid));
+            border-radius: 50% 50% 20% 20%;
+            z-index: 0;
+            box-shadow: 0 0 20px var(--tulip-bottom);
+        }
+
+        .flower__leaf--4 {
+            width: 8vmin;
+            height: 14vmin;
+            transform-origin: bottom center;
+            border-radius: 50% 50% 30% 30%;
+            transform: translate(-50%, 0%) translateZ(1vmin);
+            background-image: linear-gradient(to top, var(--tulip-mid), var(--tulip-top));
+            z-index: 2;
+            opacity: 0.9;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            mix-blend-mode: screen; /* Renkleri daha canlı yapar */
+        }
+
+        /* Çiçek İçi Işıklar */
+        .flower__light {
+            position: absolute;
+            bottom: 2vmin;
+            width: 0.8vmin;
+            height: 0.8vmin;
+            background-color: #fff;
+            border-radius: 50%;
+            filter: blur(0.1vmin);
+            animation: light-ans 4s linear infinite backwards;
+            z-index: 3;
+            box-shadow: 0 0 10px #fff, 0 0 20px var(--tulip-top);
+        }
+        
+        .flower__light:nth-child(odd) { background-color: var(--tulip-top); }
+        
+        /* Light positions setup in HTML loops */
+        .flower__light--1 { left: -1vmin; animation-delay: 1s; }
+        .flower__light--2 { left: 1vmin; animation-delay: 0.5s; }
+        .flower__light--3 { left: -2vmin; animation-delay: 0.3s; }
+        .flower__light--4 { left: 2vmin; animation-delay: 0.9s; }
+        .flower__light--5 { left: 0vmin; animation-delay: 1.5s; }
+        .flower__light--6 { left: -1.5vmin; animation-delay: 3s; }
+        .flower__light--7 { left: 1.5vmin; animation-delay: 2s; }
+        .flower__light--8 { left: -2vmin; animation-delay: 3.5s; }
+
+        /* ÇİMEN ve ÇEVRE */
+        .flower__grass {
+            --c: var(--grass-color);
+            --line-w: 1.5vmin;
+            position: absolute;
+            bottom: 12vmin;
+            left: -7vmin;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 20;
+            transform-origin: bottom center;
+            transform: rotate(-48deg) rotateY(40deg);
+        }
+
+        .flower__grass--1 { animation: moving-grass 2s linear infinite; }
+        .flower__grass--2 {
+            left: 2vmin;
+            bottom: 10vmin;
+            transform: scale(0.5) rotate(75deg) rotateX(10deg) rotateY(-200deg);
+            opacity: 0.8;
+            z-index: 0;
+            animation: moving-grass--2 1.5s linear infinite;
+        }
+
+        .flower__grass--top {
+            width: 7vmin;
+            height: 10vmin;
+            border-top-right-radius: 100%;
+            border-right: var(--line-w) solid var(--c);
+            transform-origin: bottom center;
+            transform: rotate(-2deg);
+            box-shadow: 2px 0 10px var(--c);
+        }
+
+        .flower__grass--bottom {
+            margin-top: -2px;
+            width: var(--line-w);
+            height: 25vmin;
+            background-image: linear-gradient(to top, transparent, var(--c));
+            box-shadow: 2px 0 10px var(--c);
+        }
+
+        .flower__grass__leaf {
+            --size: 10vmin;
+            position: absolute;
+            width: calc(var(--size) * 2.1);
+            height: var(--size);
+            border-top-left-radius: var(--size);
+            border-top-right-radius: var(--size);
+            background-image: linear-gradient(to top, transparent, transparent 30%, var(--c));
+            z-index: 100;
+            filter: drop-shadow(0 0 5px var(--c));
+        }
+
+        /* Yaprak animasyonları */
+        .flower__grass__leaf--1 { top: -6%; left: 30%; --size: 6vmin; transform: rotate(-20deg); animation: growing-grass-ans--1 2s 2.6s backwards; }
+        .flower__grass__leaf--2 { top: -5%; left: -110%; --size: 6vmin; transform: rotate(10deg); animation: growing-grass-ans--2 2s 2.4s linear backwards; }
+        .flower__grass__leaf--3 { top: 5%; left: 60%; --size: 8vmin; transform: rotate(-18deg) rotateX(-20deg); animation: growing-grass-ans--3 2s 2.2s linear backwards; }
+        .flower__grass__leaf--4 { top: 6%; left: -135%; --size: 8vmin; transform: rotate(2deg); animation: growing-grass-ans--4 2s 2s linear backwards; }
+        .flower__grass__leaf--5 { top: 20%; left: 60%; --size: 10vmin; transform: rotate(-24deg) rotateX(-20deg); animation: growing-grass-ans--5 2s 1.8s linear backwards; }
+        .flower__grass__leaf--6 { top: 22%; left: -180%; --size: 10vmin; transform: rotate(10deg); animation: growing-grass-ans--6 2s 1.6s linear backwards; }
+        .flower__grass__leaf--7 { top: 39%; left: 70%; --size: 10vmin; transform: rotate(-10deg); animation: growing-grass-ans--7 2s 1.4s linear backwards; }
+        .flower__grass__leaf--8 { top: 40%; left: -215%; --size: 11vmin; transform: rotate(10deg); animation: growing-grass-ans--8 2s 1.2s linear backwards; }
+
+        .flower__grass__overlay {
+            position: absolute;
+            top: -10%;
+            right: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            filter: blur(1.5vmin);
+            z-index: 100;
+        }
+
+        /* Uzun Yapraklar ve Diğer Detaylar (Kısaltılmış kod yapısı) */
+        .flower__g-long {
+            --w: 2vmin;
+            --h: 6vmin;
+            --c: var(--grass-color);
+            position: absolute;
+            bottom: 10vmin;
+            left: -3vmin;
+            transform-origin: bottom center;
+            transform: rotate(-30deg) rotateY(-20deg);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            animation: flower-g-long-ans 3s linear infinite;
+        }
+
+        .flower__g-long__top {
+            position: relative;
+            top: calc(var(--h) * -1);
+            width: calc(var(--w) + 1vmin);
+            height: var(--h);
+            border-top-right-radius: 100%;
+            border-right: 0.7vmin solid var(--c);
+            transform: translate(-0.7vmin, 1vmin);
+            box-shadow: 2px 0 8px var(--c);
+        }
+
+        .flower__g-long__bottom {
+            width: var(--w);
+            height: 50vmin;
+            transform-origin: bottom center;
+            background-image: linear-gradient(to top, transparent 30%, var(--c));
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5), 0 0 8px var(--c);
+            clip-path: polygon(35% 0, 65% 1%, 100% 100%, 0% 100%);
+        }
+
+        .flower__g-right {
+            position: absolute;
+            bottom: 6vmin;
+            left: -2vmin;
+            transform-origin: bottom left;
+            transform: rotate(20deg);
+        }
+
+        .flower__g-right .leaf {
+            width: 30vmin;
+            height: 50vmin;
+            border-top-left-radius: 100%;
+            border-left: 2vmin solid #079097;
+            background-image: linear-gradient(to bottom, transparent, var(--dark-color) 60%);
+            -webkit-mask-image: linear-gradient(to top, transparent 30%, #079097 60%);
+            mask-image: linear-gradient(to top, transparent 30%, #079097 60%);
+            filter: drop-shadow(0 0 5px #00f7ff);
+        }
+
+        .flower__g-right--1 { animation: flower-g-right-ans 2.5s linear infinite; }
+        .flower__g-right--2 { left: 5vmin; transform: rotateY(-180deg); animation: flower-g-right-ans--2 3s linear infinite; }
+        .flower__g-right--2 .leaf { height: 75vmin; filter: blur(0.3vmin) drop-shadow(0 0 5px #00f7ff); opacity: 0.8; }
+
+        .flower__g-front {
+            position: absolute;
+            bottom: 6vmin;
+            left: 2.5vmin;
+            z-index: 100;
+            transform-origin: bottom center;
+            transform: rotate(-28deg) rotateY(30deg) scale(1.04);
+            animation: flower__g-front-ans 2s linear infinite;
+        }
+
+        .flower__g-front__line {
+            width: 0.3vmin;
+            height: 20vmin;
+            background-image: linear-gradient(to top, transparent, #079097, transparent 100%);
+            position: relative;
+            box-shadow: 0 0 5px #00f7ff;
+        }
+
+        .flower__g-front__leaf-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: bottom left;
+            transform: rotate(10deg);
+        }
+
+        .flower__g-front__leaf-wrapper:nth-child(even) { left: 0vmin; transform: rotateY(-180deg) rotate(5deg); animation: flower__g-front__leaf-left-ans 1s ease-in backwards; }
+        .flower__g-front__leaf-wrapper:nth-child(odd) { animation: flower__g-front__leaf-ans 1s ease-in backwards; }
+        .flower__g-front__leaf-wrapper--1 { top: -8vmin; transform: scale(0.7); animation-delay: 5.5s !important; }
+        .flower__g-front__leaf-wrapper--2 { top: -8vmin; transform: rotateY(-180deg) scale(0.7) !important; animation-delay: 5.2s !important; }
+        .flower__g-front__leaf-wrapper--3 { top: -3vmin; animation-delay: 4.9s !important; }
+        .flower__g-front__leaf-wrapper--4 { top: -3vmin; transform: rotateY(-180deg) scale(0.9) !important; animation-delay: 4.6s !important; }
+        .flower__g-front__leaf-wrapper--5 { top: 2vmin; animation-delay: 4.3s !important; }
+        .flower__g-front__leaf-wrapper--6 { top: 2vmin; animation-delay: 4.1s !important; }
+        .flower__g-front__leaf-wrapper--7 { top: 6.5vmin; animation-delay: 3.8s !important; }
+        .flower__g-front__leaf-wrapper--8 { top: 6.5vmin; animation-delay: 3.5s !important; }
+
+        .flower__g-front__leaf {
+            width: 10vmin;
+            height: 10vmin;
+            border-radius: 100% 0% 0% 100% / 100% 100% 0% 0%;
+            box-shadow: inset 0 2px 1vmin hsla(184, 97%, 58%, 0.2);
+            background-image: linear-gradient(to bottom left, transparent, var(--dark-color)),
+                linear-gradient(to bottom right, #159faa 50%, transparent 50%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom right, #159faa 50%, transparent 50%, transparent);
+            mask-image: linear-gradient(to bottom right, #159faa 50%, transparent 50%, transparent);
+            filter: drop-shadow(0 0 4px #00f7ff);
+        }
+
+        .long-g {
+            position: absolute;
+            bottom: 25vmin;
+            left: -42vmin;
+            transform-origin: bottom left;
+        }
+
+        .long-g--1 { bottom: 0vmin; transform: scale(0.8) rotate(-5deg); }
+        .long-g--2, .long-g--3 { bottom: -3vmin; left: -35vmin; transform-origin: center; transform: scale(0.6) rotateX(60deg); }
+        .long-g--3 { left: -17vmin; bottom: 0vmin; }
+        .long-g--4 { left: 25vmin; bottom: -3vmin; transform-origin: center; transform: scale(0.6) rotateX(60deg); }
+        .long-g--5 { left: 42vmin; bottom: 0vmin; transform: scale(0.8) rotate(2deg); }
+        .long-g--6 { left: 0vmin; bottom: -20vmin; z-index: 100; filter: blur(0.3vmin); transform: scale(0.8) rotate(2deg); }
+        .long-g--7 { left: 35vmin; bottom: 20vmin; z-index: -1; filter: blur(0.3vmin); transform: scale(0.6) rotate(2deg); opacity: 0.7; }
+
+        .long-g .leaf {
+            --w: 15vmin;
+            --h: 40vmin;
+            --c: #1aaa15;
+            position: absolute;
+            bottom: 0;
+            width: var(--w);
+            height: var(--h);
+            border-top-left-radius: 100%;
+            border-left: 2vmin solid var(--c);
+            -webkit-mask-image: linear-gradient(to top, transparent 20%, var(--dark-color));
+            mask-image: linear-gradient(to top, transparent 20%, var(--dark-color));
+            transform-origin: bottom center;
+            filter: drop-shadow(0 0 5px rgba(26, 170, 21, 0.8));
+        }
+
+        .long-g .leaf--0 { left: 2vmin; animation: leaf-ans-1 4s linear infinite; }
+        .long-g .leaf--1 { --w: 5vmin; --h: 60vmin; animation: leaf-ans-1 4s linear infinite; }
+        .long-g .leaf--2 { --w: 10vmin; --h: 40vmin; left: -0.5vmin; bottom: 5vmin; transform-origin: bottom left; transform: rotateY(-180deg); animation: leaf-ans-2 3s linear infinite; }
+        .long-g .leaf--3 { --w: 5vmin; --h: 30vmin; left: -1vmin; bottom: 3.2vmin; transform-origin: bottom left; transform: rotate(-10deg) rotateY(-180deg); animation: leaf-ans-3 3s linear infinite; }
+
+        /* Utility Animations */
+        .grow-ans { animation: grow-ans 2s var(--d) backwards; }
+        .growing-grass { animation: growing-grass-ans 1s 2s backwards; }
+        .not-loaded * { animation-play-state: paused !important; }
+
+        /* Keyframes Definitions */
+        @keyframes leaf-ans-1 { 0%, 100% { transform: rotate(-5deg) scale(1); } 50% { transform: rotate(5deg) scale(1.1); } }
+        @keyframes leaf-ans-2 { 0%, 100% { transform: rotateY(-180deg) rotate(5deg); } 50% { transform: rotateY(-180deg) rotate(0deg) scale(1.1); } }
+        @keyframes leaf-ans-3 { 0%, 100% { transform: rotate(-10deg) rotateY(-180deg); } 50% { transform: rotate(-20deg) rotateY(-180deg); } }
+        @keyframes grow-ans { 0% { transform: scale(0); opacity: 0; } }
+        @keyframes light-ans { 
+            0% { opacity: 0; transform: translateY(0vmin); }
+            25% { opacity: 1; transform: translateY(-5vmin) translateX(-2vmin); }
+            50% { opacity: 1; transform: translateY(-15vmin) translateX(2vmin); filter: blur(0.2vmin); }
+            75% { transform: translateY(-20vmin) translateX(-2vmin); filter: blur(0.2vmin); }
+            100% { transform: translateY(-30vmin); opacity: 0; filter: blur(1vmin); }
+        }
+        @keyframes moving-flower-1 { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-2deg); } }
+        @keyframes moving-flower-2 { 0%, 100% { transform: rotate(18deg); } 50% { transform: rotate(14deg); } }
+        @keyframes moving-flower-3 { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(-20deg) rotateY(-10deg); } }
+        @keyframes blooming-leaf-right { 0% { transform-origin: left; transform: rotate(15deg) rotateY(10deg) scale(0); } }
+        @keyframes blooming-leaf-left { 0% { transform-origin: right; transform: rotate(-15deg) rotateY(10deg) scale(0); } }
+        @keyframes grow-flower-tree { 0% { height: 0; border-radius: 1vmin; } }
+        @keyframes blooming-flower { 0% { transform: scale(0); } }
+        @keyframes moving-grass { 0%, 100% { transform: rotate(-48deg) rotateY(40deg); } 50% { transform: rotate(-50deg) rotateY(40deg); } }
+        @keyframes moving-grass--2 { 0%, 100% { transform: scale(0.5) rotate(75deg) rotateX(10deg) rotateY(-200deg); } 50% { transform: scale(0.5) rotate(79deg) rotateX(10deg) rotateY(-200deg); } }
+        @keyframes growing-grass-ans { 0% { transform: scale(0); } }
+        @keyframes growing-grass-ans--1 { 0% { transform-origin: bottom left; transform: rotate(-20deg) scale(0); } }
+        @keyframes growing-grass-ans--2 { 0% { transform-origin: bottom right; transform: rotate(10deg) scale(0); } }
+        @keyframes growing-grass-ans--3 { 0% { transform-origin: bottom left; transform: rotate(-18deg) rotateX(-20deg) scale(0); } }
+        @keyframes growing-grass-ans--4 { 0% { transform-origin: bottom right; transform: rotate(2deg) scale(0); } }
+        @keyframes growing-grass-ans--5 { 0% { transform-origin: bottom left; transform: rotate(-24deg) rotateX(-20deg) scale(0); } }
+        @keyframes growing-grass-ans--6 { 0% { transform-origin: bottom right; transform: rotate(10deg) scale(0); } }
+        @keyframes growing-grass-ans--7 { 0% { transform-origin: bottom left; transform: rotate(-10deg) scale(0); } }
+        @keyframes growing-grass-ans--8 { 0% { transform-origin: bottom right; transform: rotate(10deg) scale(0); } }
+        @keyframes flower-g-long-ans { 0%, 100% { transform: rotate(-30deg) rotateY(-20deg); } 50% { transform: rotate(-32deg) rotateY(-20deg); } }
+        @keyframes flower-g-right-ans { 0%, 100% { transform: rotate(20deg); } 50% { transform: rotate(24deg) rotateX(-20deg); } }
+        @keyframes flower-g-right-ans--2 { 0%, 100% { transform: rotateY(-180deg) rotate(0deg) rotateX(-20deg); } 50% { transform: rotateY(-180deg) rotate(6deg) rotateX(-20deg); } }
+        @keyframes flower__g-front-ans { 0%, 100% { transform: rotate(-28deg) rotateY(30deg) scale(1.04); } 50% { transform: rotate(-35deg) rotateY(40deg) scale(1.04); } }
+        @keyframes flower__g-front__leaf-left-ans { 0% { transform: rotateY(-180deg) rotate(5deg) scale(0); } }
+        @keyframes flower__g-front__leaf-ans { 0% { transform: rotate(10deg) scale(0); } }
+        @keyframes flower__g-fr-ans { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(4deg); } }

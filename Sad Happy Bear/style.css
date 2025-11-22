@@ -1,0 +1,223 @@
+
+    html,body { height: 100%; margin: 0; padding: 0; overflow: hidden; position: fixed; width: 100%; }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      background: hsl(0 0% 90%);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .25s ease;
+      touch-action: none;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: hsl(0 0% 10%); }
+    }
+
+    /* --- Backdrop --- */
+    .backdrop {
+      --color-one: hsl(270 90% 70%);
+      --color-two: hsl(240 90% 75%);
+      --color-three: hsl(200 90% 70%);
+      --color-four: hsl(280 90% 75%);
+      --color-five: hsl(260 90% 70%);
+      --cloud: hsla(0 0% 100% / 0.95);
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform-origin: center center;
+      height: 100vmax;
+      width: 100vmax;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center center, var(--cloud) 20%, transparent 20%),
+        repeating-conic-gradient(
+          var(--color-one) 0 10%,
+          var(--color-two) 10% 20%,
+          var(--color-three) 20% 30%,
+          var(--color-four) 30% 40%,
+          var(--color-five) 40% 50%
+        );
+      z-index: 0;
+      transform: translate(-50%,-50%) scale(0);
+      will-change: transform;
+    }
+
+    /* --- Hearts wrapper --- */
+    .hearts {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 60vmin;
+      height: 60vmin;
+      pointer-events: none;
+      z-index: 2;
+      will-change: transform;
+    }
+
+    .heart {
+      position: absolute;
+      height: calc(var(--size, 8) * 1vmin);
+      width: calc(var(--size, 8) * 1vmin);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      z-index: 3;
+      will-change: transform;
+    }
+    .heart svg { width:100%; height:100%; display:block; }
+    .heart svg path { fill: hsl(var(--hue, 340) 100% 60%); }
+
+    /* --- Main SVG size --- */
+    svg.care-bear {
+      --size: 30;
+      height: calc(var(--size) * 1vmin);
+      width: calc(var(--size) * 1vmin);
+      z-index: 3;
+      cursor: pointer;
+      display: block;
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      svg.care-bear {
+        --size: 50;
+      }
+      
+      .hearts {
+        width: 80vmin;
+        height: 80vmin;
+      }
+      
+      .hint {
+        font-size: 16px;
+        bottom: 24px;
+        padding: 0 16px;
+        text-align: center;
+      }
+      
+      .backdrop {
+        height: 150vmax;
+        width: 150vmax;
+      }
+    }
+
+    @media (max-width: 480px) {
+      svg.care-bear {
+        --size: 60;
+      }
+      
+      .hearts {
+        width: 90vmin;
+        height: 90vmin;
+      }
+      
+      .hint {
+        font-size: 14px;
+        bottom: 16px;
+      }
+      
+      .backdrop {
+        height: 180vmax;
+        width: 180vmax;
+      }
+    }
+
+    /* Care-bear color variables */
+    .care-bear { 
+      --hue: 0; 
+      --saturation: 0%; 
+      --lightness: 60%; 
+    }
+
+    /* SVG elemanlarına HSL renk uygulaması */
+    .care-bear__head circle,
+    .care-bear__belly > circle:first-child,
+    .care-bear__ear circle:first-child,
+    .care-bear__arm rect,
+    .care-bear__feet path {
+      fill: hsl(var(--hue) var(--saturation) var(--lightness));
+      transition: fill 0.3s ease;
+    }
+
+    .care-bear__ear circle:last-child {
+      fill: hsl(var(--hue) var(--saturation) calc(var(--lightness) - 10%));
+      transition: fill 0.3s ease;
+    }
+
+    .care-bear__belly > circle:nth-child(2) {
+      fill: hsl(var(--hue) calc(var(--saturation) * 0.6) calc(var(--lightness) + 15%));
+      transition: fill 0.3s ease;
+    }
+
+    .care-bear__muzzle circle {
+      fill: hsl(var(--hue) calc(var(--saturation) * 0.4) calc(var(--lightness) + 20%));
+      transition: fill 0.3s ease;
+    }
+
+    .care-bear__nose ellipse {
+      fill: hsl(var(--hue) calc(var(--saturation) * 0.9) calc(var(--lightness) - 25%));
+      transition: fill 0.3s ease;
+    }
+
+    .care-bear__eye circle:first-child {
+      fill: hsl(0 0% 10%);
+    }
+
+    .care-bear__heart path {
+      fill: hsl(0 0% 50%);
+      transition: fill 0.3s ease;
+    }
+
+    .care-bear.happy .care-bear__heart path {
+      fill: hsl(350 100% 60%);
+    }
+
+    .rain {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 1;
+    }
+    .rain svg {
+      position: absolute;
+      height: 3vmin;
+      width: 3vmin;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      opacity: 0.8;
+      transform-origin: 50% 50%;
+      animation-name: drop;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    .rain svg path { fill: #a1c6cc; stroke: none; }
+
+    @keyframes drop {
+      0%   { transform: translateY(-10vmin); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(75vmin); opacity: 0; }
+    }
+
+    /* small helper text */
+    .hint { 
+      position: absolute; 
+      bottom: 16px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      z-index:4; 
+      font-size:14px; 
+      color: rgba(0,0,0,.6); 
+    }
+    @media (prefers-color-scheme: dark) { 
+      .hint{ color: rgba(255,255,255,.75); } 
+    }

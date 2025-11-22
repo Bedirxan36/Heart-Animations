@@ -1,0 +1,146 @@
+body {
+            background: #8a69d4;
+            font-family: 'Pacifico', cursive;
+            overflow: hidden;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        /* Kalbi tutan ana kapsayıcı */
+        .ico {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 1.5s ease-in-out; /* Açılıp kapanma geçişi */
+            transform-origin: center;
+        }
+
+        /* Kalp tıklandığında bu class eklenir ve kalp devasa büyür */
+        .container.open .ico {
+            transform: scale(50); /* Ekranı kaplayacak kadar büyüt */
+            cursor: default;
+        }
+
+        /* Yazı - Kalp içindeki */
+        .ico .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            z-index: 10;
+            font-size: 40px;
+            text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Kalp İkonları (Pseudo elementler) */
+        .ico:before,
+        .ico:after,
+        .ico2:before,
+        .ico2:after {
+            content: "\f004";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            font-size: 20em;
+            text-rendering: auto;
+        }
+
+        .ico:before { 
+            color: #ff4d88; 
+            z-index: 3; 
+        }
+        
+        /* Dış halka efekti */
+        .ico:after { 
+            color: #ff4081; 
+            z-index: 2;
+            animation: explode 4s infinite; 
+        }
+
+        .ico2:before { 
+            color: #e91e63; 
+            z-index: 1;
+            animation: explodeSmall 3s infinite; 
+        }
+        
+        .ico2:after { 
+            color: #d81b60; 
+            z-index: 0;
+            animation: explodeSmall 2s infinite; 
+        }
+
+        /* Tıklandıktan sonra gelen mesaj */
+        .endtext {
+            opacity: 0;
+            position: fixed; /* Ekrana sabitle */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            z-index: 100; /* Kalbin (arka planın) üstünde */
+            pointer-events: none;
+            transition: opacity 1s ease 0.5s; /* Gecikmeli gel */
+        }
+
+        .container.open .endtext {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .endtext h1 { margin: 0; font-size: 50px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .endtext h2 { margin: 15px 0; font-size: 35px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .endtext h3 { margin: 0; font-size: 28px; opacity: 0.8; }
+
+        /* Kapatma Tuşu (X) */
+        .close {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            font-size: 40px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.5s ease 1s;
+            z-index: 101;
+            color: #fff;
+        }
+
+        .container.open .close {
+            opacity: 1;
+        }
+
+        /* Animasyonlar */
+        @keyframes explode {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+        }
+
+        @keyframes explodeSmall {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+        }
