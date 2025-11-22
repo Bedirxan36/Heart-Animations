@@ -26,7 +26,7 @@ Projeleri tarayıcıda görüntülemek için aşağıdaki linklere tıklayabilir
 | **Sad Happy Bear** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Sad%20Happy%20Bear) |
 | **Tulip Flower** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Tulip%20Flower) |
 
-> **Not:** Ana sayfa için: [https://Bedirxan36.github.io/Heart-Animations](https://Bedirxan36.github.io/Heart-Animations)
+> **Not:** Ana sayfa için: [https://Bedirxan36.github.io/Heart-Animations](https://github.com/Bedirxan36/Heart-Animations)
 
 ---
 
