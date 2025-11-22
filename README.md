@@ -56,7 +56,13 @@ Proje tamamen saf web teknolojileri ile geliştirilmiştir:
 
 ## 📸 Ekran Görüntüleri
 
-*(Buraya projelerden alacağınız ekran görüntülerini `screenshots` klasörüne yükleyip ekleyebilirsiniz)*
+Bu koleksiyonda yer alan bazı animasyonların önizlemeleri:
+
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+| ![Sad Happy Bear](screenshots/bear.png) <br> **Sad Happy Bear** | ![Flowfield Heart](screenshots/Fredrika.png) <br> **Flowfield Heart** | ![Tulip Flower](screenshots/Flower.png) <br> **Tulip Flower** |
+| ![Dusty Heart](screenshots/tozlukalp.png) <br> **Dusty Heart** | ![Heart Letter](screenshots/mektub.png) <br> **Heart Letter** | ![Heart Beat](screenshots/kalpatısı.png) <br> **Heart Beat** |
+| ![Heart Animation](screenshots/kalp.png) <br> **Heart Animation** | | |
 
 ---
 
