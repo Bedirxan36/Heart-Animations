@@ -36,13 +36,13 @@ Aşağıdaki klasörler repo içerisinde yer almaktadır:
 
 | Klasör Adı | Açıklama | Teknolojiler |
 |------------|----------|--------------|
-| **Flowfield Heart** | Simplex Noise tabanlı akışkan parçacık kalbi ("Fredrika") | `Canvas`, `JS` |
-| **Heart Beat** | Ritmik animasyonlara tepki veren 3D kalp | `Three.js`, `GSAP` |
-| **Sad Happy Bear** | SVG karakter animasyonu – interaktif duygusal ifadeler | `SVG`, `GSAP` |
-| **Tulip Flower** | CSS ile çizilmiş neon doğa ve parallax etkisi | `CSS3` |
-| **Heart Letter** | Tıklanınca açılan animasyonlu aşk mektubu | `jQuery`, `CSS` |
-| **Dusty Heart** | 3D parçacıklarla oluşturulmuş "Tozlu Kalp" simülasyonu | `Three.js`, `GSAP` |
-| **Heart Animation** | Nabız gibi atan matematiksel kalp animasyonu | `Canvas`, `Vanilla JS` |
+| **Flowfield Heart** | Simplex Noise tabanlı akışkan parçacık kalbi ("Fredrika") | `HTML`, `CSS`, `JS` |
+| **Heart Beat** | Ritmik animasyonlara tepki veren 3D kalp | `HTML`, `CSS`, `JS` |
+| **Sad Happy Bear** | SVG karakter animasyonu – interaktif duygusal ifadeler | `HTML`, `CSS`, `JS` |
+| **Tulip Flower** | CSS ile çizilmiş neon doğa ve parallax etkisi | `HTML`, `CSS`, `JS` |
+| **Heart Letter** | Tıklanınca açılan animasyonlu aşk mektubu | `HTML`, `CSS`, `JS` |
+| **Dusty Heart** | 3D parçacıklarla oluşturulmuş "Tozlu Kalp" simülasyonu | `HTML`, `CSS`, `JS` |
+| **Heart Animation** | Nabız gibi atan matematiksel kalp animasyonu | `HTML`, `CSS`, `JS` |
 
 ---
 
