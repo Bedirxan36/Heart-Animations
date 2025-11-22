@@ -1,4 +1,4 @@
-# 💖 Creative Web Animations Collection  
+# 💖 Creative Web Animations Collection
 *Etkileşimli – Romantik – Yaratıcı Web Animasyonları*
 
 ![Status](https://img.shields.io/badge/status-active-success)
@@ -12,85 +12,81 @@
 
 ---
 
-## 🚀 Canlı Demo
+## 🚀 Canlı Demolar (Live Preview)
 
-📍 *GitHub Pages aktif edildiğinde buraya linki ekleyin.*
+Projeleri tarayıcıda görüntülemek için aşağıdaki linklere tıklayabilirsiniz:
 
-➡ https://Bedirxan36.github.io/Heart-Animations
+| Animasyon Adı | Canlı Link |
+|---------------|------------|
+| **Dusty Heart** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Dusty%20Heart/) |
+| **Flowfield Heart** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Flowfield%20Heart/) |
+| **Heart Animation** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Heart%20Animation/) |
+| **Heart Beat** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Heart%20Beat/) |
+| **Heart Letter** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Heart%20Letter/) |
+| **Sad Happy Bear** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Sad%20Happy%20Bear/) |
+| **Tulip Flower** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Tulip%20Flower/) |
+
+> **Not:** Ana sayfa için: [https://Bedirxan36.github.io/Heart-Animations](https://Bedirxan36.github.io/Heart-Animations)
 
 ---
 
-## 📂 Proje İçeriği
+## 📂 Proje İçeriği ve Detaylar
 
-| Dosya | Açıklama | Teknolojiler |
-|------|----------|--------------|
-| **Fredrika ❤️ - Flowfield Heart.html** | Simplex Noise tabanlı akışkan parçacık kalbi | `Canvas`, `JS` |
-| **KalpAtışı❤.html** | Ritmik animasyonlara tepki veren 3D kalp | `Three.js`, `GSAP` |
-| **ayı.html** | SVG karakter animasyonu – interaktif duygusal ifadeler | `SVG`, `GSAP` |
-| **çicek.html** | CSS ile çizilmiş neon doğa ve parallax etkisi | `CSS3` |
-| **mektub.html** | Tıklanınca açılan animasyonlu aşk mektubu | `jQuery`, `CSS Transitions` |
-| **tozlukalpt.html** | 3D parçacıklarla kalp simülasyonu | `Three.js`, `GSAP` |
-| **index.html** | Nabız gibi atan matematiksel kalp animasyonu | `Canvas`, `Vanilla JS` |
+Aşağıdaki klasörler repo içerisinde yer almaktadır:
+
+| Klasör Adı | Açıklama | Teknolojiler |
+|------------|----------|--------------|
+| **Flowfield Heart** | Simplex Noise tabanlı akışkan parçacık kalbi ("Fredrika") | `Canvas`, `JS` |
+| **Heart Beat** | Ritmik animasyonlara tepki veren 3D kalp | `Three.js`, `GSAP` |
+| **Sad Happy Bear** | SVG karakter animasyonu – interaktif duygusal ifadeler | `SVG`, `GSAP` |
+| **Tulip Flower** | CSS ile çizilmiş neon doğa ve parallax etkisi | `CSS3` |
+| **Heart Letter** | Tıklanınca açılan animasyonlu aşk mektubu | `jQuery`, `CSS` |
+| **Dusty Heart** | 3D parçacıklarla oluşturulmuş "Tozlu Kalp" simülasyonu | `Three.js`, `GSAP` |
+| **Heart Animation** | Nabız gibi atan matematiksel kalp animasyonu | `Canvas`, `Vanilla JS` |
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
 
-HTML5 Canvas  → 2D çizimler ve parçacık sistemleri  
-Three.js      → WebGL tabanlı 3D grafikler  
-GSAP          → Yüksek performanslı animasyon timeline  
-Simplex Noise → Doğal hareket simülasyonu  
-CSS3          → Saf CSS illüstrasyonlar  
-SVG           → İnteraktif vektör animasyonlar  
+* **HTML5 Canvas** → 2D çizimler ve parçacık sistemleri
+* **Three.js** → WebGL tabanlı 3D grafikler
+* **GSAP** → Yüksek performanslı animasyon zaman çizelgeleri
+* **Simplex Noise** → Doğal hareket simülasyonu
+* **CSS3** → Saf CSS illüstrasyonlar ve geçiş efektleri
+* **SVG** → Ölçeklenebilir vektör animasyonlar
 
 ---
 
-## 📸 Ekran Görüntüleri (Önerilen)
+## 📸 Ekran Görüntüleri
 
-![Flowfield Heart](screenshots/flowfield.png)  
-![Happy Bear](screenshots/happybear.png)  
-![Neon Flower](screenshots/neonflower.png)
-
-📌 “screenshots” klasörü oluşturup örnek görselleri buraya eklemeniz önerilir.
+*(Buraya projelerden alacağınız ekran görüntülerini `screenshots` klasörüne yükleyip aşağıdaki formatta ekleyebilirsiniz)*
 
 ---
 
 ## 📦 Kurulum & Çalıştırma
 
-Her proje **statik HTML** yapısındadır. Ekstra kurulum gerektirmez.
+Bu projeleri yerel bilgisayarınızda çalıştırmak için:
 
-```bash
-git clone https://github.com/kullaniciadi/repo-adi.git
-cd repo-adi
-```
+1.  Repoyu klonlayın:
+    ```bash
+    git clone [https://github.com/Bedirxan36/Heart-Animations.git](https://github.com/Bedirxan36/Heart-Animations.git)
+    ```
+2.  Proje klasörüne gidin:
+    ```bash
+    cd Heart-Animations
+    ```
+3.  İlgili klasörün içine girip (örneğin `Dusty Heart`) `.html` dosyasını tarayıcınızda açın.
 
-💻 Çalıştırmak istediğin `.html` dosyasına çift tıklaman yeterli.
-
-⚠ Three.js ve GSAP kullanan projelerde internet bağlantısı gereklidir (CDN üzerinden çekilir).
-
----
-
-## 🔥 GitHub Pages Aktifleştirme
-
-Repository → Settings → Pages  
-Source → main branch (root) → Save  
-
-Ardından üst kısımdaki *Canlı Demo* bölümüne sistemin verdiği linki ekleyin.
-
----
-
-## 📄 Lisans
-
-Bu proje **eğitim ve hobi amaçlıdır**. Bazı kod parçaları açık kaynak topluluğundan (CodePen vb.) esinlenilerek oluşturulmuştur.
+> ⚠ **Uyarı:** Three.js ve GSAP kullanan bazı projeler, kütüphaneleri CDN üzerinden çektiği için internet bağlantısı gerektirebilir.
 
 ---
 
 ## 🙌 Destek Ol
 
-⭐ Eğer bu çalışma hoşuna gittiyse **repo’ya yıldız vermeyi unutma!**  
-🧠 “Kodlamayı sanatla birleştiren projeler ilgini çekiyorsa takip et.”
+⭐ Eğer bu animasyonlar hoşuna gittiyse sağ üst köşeden **Star** vermeyi unutma!
+🧠 Kodlamayı sanatla birleştiren projeler için takipte kal.
 
 ---
 
-> 💬 *“Kod yazmak sadece fonksiyon üretmek değil, duygu üretmektir.”*  
+> 💬 *“Kod yazmak sadece fonksiyon üretmek değil, duygu üretmektir.”*
 > — *Bedirxan*
