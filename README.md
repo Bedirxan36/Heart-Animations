@@ -16,7 +16,7 @@
 
 📍 *GitHub Pages aktif edildiğinde buraya linki ekleyin.*
 
-➡ https://kullaniciadi.github.io/repo-adi
+➡ https://Bedirxan36.github.io/Heart-Animations
 
 ---
 
