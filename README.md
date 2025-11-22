@@ -18,13 +18,13 @@ Projeleri tarayıcıda görüntülemek için aşağıdaki linklere tıklayabilir
 
 | Animasyon Adı | Canlı Link |
 |---------------|------------|
-| **Dusty Heart** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Dusty%20Heart/) |
-| **Flowfield Heart** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Flowfield%20Heart/) |
-| **Heart Animation** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Heart%20Animation/) |
-| **Heart Beat** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Heart%20Beat/) |
-| **Heart Letter** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Heart%20Letter/) |
-| **Sad Happy Bear** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Sad%20Happy%20Bear/) |
-| **Tulip Flower** | [Görüntüle ➜](https://Bedirxan36.github.io/Heart-Animations/Tulip%20Flower/) |
+| **Dusty Heart** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Dusty%20Heart) |
+| **Flowfield Heart** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Flowfield%20Heart) |
+| **Heart Animation** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Heart%20Animation) |
+| **Heart Beat** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Heart%20Beat) |
+| **Heart Letter** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Heart%20Letter) |
+| **Sad Happy Bear** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Sad%20Happy%20Bear) |
+| **Tulip Flower** | [Görüntüle ➜](https://github.com/Bedirxan36/Heart-Animations/tree/main/Tulip%20Flower) |
 
 > **Not:** Ana sayfa için: [https://Bedirxan36.github.io/Heart-Animations](https://Bedirxan36.github.io/Heart-Animations)
 
