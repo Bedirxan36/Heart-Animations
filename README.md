@@ -56,6 +56,7 @@ Proje tamamen saf web teknolojileri ile geliştirilmiştir:
 
 ## 📸 Ekran Görüntüleri
 
+(Buraya projelerden alacağınız ekran görüntülerini `screenshots` klasörüne yükleyip ekleyebilirsiniz)
 Bu koleksiyonda yer alan bazı animasyonların önizlemeleri:
 
 | | | |
